@@ -36,33 +36,22 @@ describe('registration tests', function(){
             // .refresh().then(function() {console.log("refreshed");})
                 
     });
-/*
-    it('set debug user to s9901', function() {
-        return 
-            client
-            .pause(500)
-            .setValue('#debugUserId', 's9901');
-    });*/
 
-    it('go to Registration session', function() {
+    //Doesn't work yet. Finding way to locate Polymer element
+    it('should go to Registration session', function() {
         return client
-            .url('http://student3-test.cedartc.org/index.html#registration')
+            .pause(500)
+            .execute(function(){
+                return document.getElementsByTagName('ctc-template')[0].shadowRoot.getElementById('sideMenu').shadowRoot.getElementById('user-id');
+            }).then(function(res) {
+                console.log(res.value);
+            })
             .pause(500);
     });
-    //Doesn't work yet. Finding way to locate Polymer element
-    it('check registration open or not', function() {
-        return client
-            .pause(500)
-            .click('#registration')
-            .pause(500)
-            .getText('p', function(err, text){
-                console.log(text);
-            });
-    });
     //Done Automation Test
-/*    it('finish automatically testing Registration page', function(done) {
+    it('finish automatically testing Registration page', function(done) {
         client.call(done);
-    });*/
+    });
 
     after(function(done) {
         client.end(done);
