@@ -41,6 +41,13 @@ describe('registration tests', function(){
             });
     });
 
+    it('should get paper drawer panel style attributes', function () {
+        return client
+            .getAttribute('#paperDrawerPanel', 'style').then(function(attr) {
+                console.log(attr);
+            });
+    });
+
     //Done Automation Test
     it('finish automatically testing Registration page', function(done) {
         client.call(done);
